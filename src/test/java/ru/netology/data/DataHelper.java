@@ -69,46 +69,46 @@ public class DataHelper {
     }
 
     // ПОЛЕ ВВОДА "ВЛАДЕЛЕЦ" ЗАПОЛНЕНО ЦИФРАМИ
-    public static CardData getDigitsInHolder() {
+    public static CardData getNumbersInHolder() {
         CardData card = getCardDataEn(approvedNumber);
         card.setHolder(fakerEN.numerify("####################"));
         return card;
     }
 
     // ПОЛЕ ВВОДА "ВЛАДЕЛЕЦ" ЗАПОЛНЕНО ТОЛЬКО ФАМИЛИЕЙ
-    public static CardData getHolderWithoutName() {
+    public static CardData getOnlyLastName() {
         CardData card = getCardDataEn(approvedNumber);
         card.setHolder(fakerEN.name().lastName());
         return card;
     }
 
     // НПОЛЕ ВВОДА "ВЛАДЕЛЕЦ" ЗАПОЛНЕНО БОЛЬШИМ КОЛИЧЕСТВОМ СИМВОЛОВ НА ЛАТИНИЦЕ
-    public static CardData getHolderWithManyLetters() {
+    public static CardData getWithManyLetters() {
         CardData card = getCardDataEn(approvedNumber);
         card.setHolder("SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS");
         return card;
     }
 
     // ПОЛЕ ВВОДА "CVC/CVV" ЗАПОЛНЕНО 1 ЦИФРОЙ
-    public static CardData getCvcCodeWithTwoDigits() {
+    public static CardData getCvcWithOneNumber() {
         CardData card = getCardDataEn(approvedNumber);
         card.setCvc(fakerEN.number().digits(1) + "w");
         return card;
     }
 
     // ПОЛЕ ВВОДА "НОМЕР КАРТЫ" ЗАПОЛНЕНО НЕДОСТАТОЧНЫМ КОЛИЧЕСТВОМ ЦИФР
-    public static CardData getNumberIfFewDigits() {
+    public static CardData getNotEnoughNumbers() {
         return getCardDataEn("card" + approvedNumber.substring(3));
     }
 
     // ПОЛЕ ВВОДА "НОМЕР КАРТЫ" ЗАПОЛНЕНО НЕВАЛИДНЫМ ЗНАЧЕНИЕМ
-    public static CardData getNumberIfNotExistInBase() {
+    public static CardData getNumberNotExist() {
         return getCardDataEn(notExistNumber);
     }
 
 
     // ПОЛЕ ВВОДА "МЕСЯЦ" ЗАПОЛНЕНО 1 ЦИФРОЙ
-    public static CardData getMonthWithOneDigit() {
+    public static CardData getMonthOneNumber() {
         CardData card = getCardDataEn(approvedNumber);
         card.setMonth(Integer.toString(fakerEN.number().numberBetween(1, 9)));
         return card;
@@ -129,7 +129,7 @@ public class DataHelper {
     }
 
     // ПОЛЕ ВВОДА "ГОД" ЗАПОЛНЕНО ЗНАЧЕНИЕМ ИЗ 1 ЦИФРЫ
-    public static CardData getYearWithOneDigit() {
+    public static CardData getYearWithOneNumber() {
         CardData card = getCardDataEn(approvedNumber);
         card.setYear(Integer.toString(fakerEN.number().numberBetween(1, 9)));
         return card;
@@ -148,7 +148,7 @@ public class DataHelper {
     }
 
     // ПОЛЕ ВВОДА "ГОД" ЗАПОЛНЕНО ЗАВЫШЕННЫМ СРОКОМ ГОДНОСТИ КАРТЫ
-    public static CardData getInvalidYearIfInTheFarFuture() {
+    public static CardData getInvalidYear() {
         CardData card = getCardDataEn(approvedNumber);
         int numberYear = Calendar.getInstance().get(Calendar.YEAR) % 1000;
         card.setYear(Integer.toString(fakerEN.number().numberBetween(numberYear + 6, 99)));
@@ -156,7 +156,7 @@ public class DataHelper {
     }
 
     // ПОЛЕ ВВОДА "ГОД" ЗАПОЛНЕНО НУЛЕВЫМ ЗНАЧЕНИЕМ
-    public static CardData getYearWithZero() {
+    public static CardData getYearZero() {
         CardData card = getCardDataEn(approvedNumber);
         card.setYear("00");
         return card;
