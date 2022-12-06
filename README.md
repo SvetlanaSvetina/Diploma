@@ -41,16 +41,16 @@
 
 ### Запуск автотестов
 
-* Для запуска авто-тестов в Terminal Intellij IDEA открыть новую сессию и ввести команду: ./gradlew clean test allureReport -Dheadless=true где: 
+Для запуска авто-тестов в Terminal Intellij IDEA открыть новую сессию и ввести команду: ./gradlew clean test allureReport -Dheadless=true где: 
 
 * - allureReport - подготовка данных для отчета Allure
 
 * - Dheadless=true - запускает авто-тесты в headless-режиме (без открытия браузера)
 
 
-## Отчетные данные Allure
+### Отчетные данные Allure
 
-* Для создания отчета тестирования, запустите тесты следующим образом:
+Для создания отчета тестирования, запустите тесты следующим образом:
 
 * gradlew clean test -Ddb.url=jdbc:mysql://localhost:3306/app allureReport - для БД MysSQL
 
