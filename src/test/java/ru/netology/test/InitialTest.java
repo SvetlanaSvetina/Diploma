@@ -11,7 +11,7 @@ import ru.netology.data.SQLHelper;
 import static com.codeborne.selenide.Selenide.open;
 
 // ПРЕДУСЛОВИЯ ПЕРЕД ТЕСТАМИ
-public class UITest {
+public class InitialTest {
 
     @BeforeAll
     static void setUpAll() {
