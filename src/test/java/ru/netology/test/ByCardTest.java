@@ -55,7 +55,7 @@ public class ByCardTest extends InitialTest {
         buyPage.checkBuyForm(cardData);
         buyPage.failureResultNotification();
 
-        var expectedStatus = "Decline";
+        var expectedStatus = "DECLINED";
         var actualStatus = getCardStatusForPayWithCard();
         assertEquals(expectedStatus, actualStatus);
 
