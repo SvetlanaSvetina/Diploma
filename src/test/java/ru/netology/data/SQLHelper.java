@@ -18,16 +18,13 @@ public class SQLHelper {
     private static final String url = System.getProperty("db.url");
     private static final String user = System.getProperty("db.user");
     private static final String password = System.getProperty("db.password");
-    private static Connection connection;
 
+
+    @SneakyThrows
     public static Connection getConnection() {
-        try {
-            connection = DriverManager.getConnection(url, user, password);
-        } catch (SQLException sqlException) {
-            sqlException.printStackTrace();
-        }
-        return connection;
+        return DriverManager.getConnection(url, user, password);
     }
+
 
     public static void dropDataBase() {
         var runner = new QueryRunner();
