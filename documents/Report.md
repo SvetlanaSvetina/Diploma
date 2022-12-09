@@ -16,14 +16,14 @@
 
 Всего было проведено 36 тест-кейсов:
 
-![image](screenshots/Снимок экрана 2022-12-09 в 00.26.53.png)(screenshots/img_3.png)
+![image](img_3.png)
 
 Успешно пройден 61,11%, 22 успешно пройденных теста и 14 не успешных тестов:
 
-![image](screenshots/img.png)
+![image](img.png)
 
 
-![image](screenshots/img_2.png)
+![image](img_2.png)
 
 
 
