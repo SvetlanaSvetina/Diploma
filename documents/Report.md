@@ -16,16 +16,16 @@
 
 Всего было проведено 36 тест-кейсов:
 
-![image](img_3.png)
+![image](screenshots/img_3.png)
 
 Успешно пройден 61,11%, 22 успешно пройденных теста и 14 не успешных тестов:
 
-![image](img.png)
+![image](screenshots/img.png)
 
 
-![image](img_2.png)
+![image](screenshots/img_2.png)
 
-![image](img_4.png)
+![image](screenshots/img_4.png)
 
 ### Общие рекомендации:
 

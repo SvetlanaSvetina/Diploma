@@ -53,10 +53,11 @@
 
 Для запуска авто-тестов в Terminal Intellij IDEA открыть новую сессию и ввести команду: ./gradlew clean test allureReport -Dheadless=true где: 
 
-* - allureReport - подготовка данных для отчета Allure
+* allureReport - подготовка данных для отчета Allure
 
-* - Dheadless=true - запускает авто-тесты в headless-режиме (без открытия браузера)
+* -Dheadless=true - запускает авто-тесты 
 
+* -Dselenide.headless=true - запускает авто-тесты без открытия браузера
 
 ### Отчетные данные Allure
 
