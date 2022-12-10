@@ -28,9 +28,9 @@ public class SQLHelper {
 
     public static void dropDataBase() {
         var runner = new QueryRunner();
-        var order = "DELETE FROM app.order_entity";
-        var payment = "DELETE FROM app.payment_entity";
-        var creditRequest = "DELETE FROM app.credit_request_entity";
+        var order = "DELETE FROM order_entity";
+        var payment = "DELETE FROM payment_entity";
+        var creditRequest = "DELETE FROM credit_request_entity";
 
         try (var connection = getConnection()) {
             runner.update(connection, order);
