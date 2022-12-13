@@ -6,6 +6,8 @@ import org.junit.jupiter.api.Test;
 import ru.netology.pages.BuyPage;
 import ru.netology.pages.MainPage;
 
+import java.sql.SQLException;
+
 import static com.codeborne.selenide.Selenide.$$;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
