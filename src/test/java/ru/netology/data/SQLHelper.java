@@ -47,7 +47,7 @@ public class SQLHelper {
 
     @SneakyThrows
     public static String getCreditRequestInfo() {
-        String statusQuery = "SELECT * FROM credit_request_entity WHERE created = (SELECT MAX(created) FROM credit_request_entity);";
+        String statusQuery = "SELECT * FROM credit_request_entity ORDER BY created DESC;";
         var runner = new QueryRunner();
         var connection = getConnection();
         var cardStatus = runner.query(connection, statusQuery, new BeanHandler<>(CreditRequestEntity.class));
@@ -57,7 +57,7 @@ public class SQLHelper {
 
     @SneakyThrows
     public static String getOrderInfo() {
-        var idQueryForCardPay = "SELECT * FROM order_entity WHERE created = (SELECT MAX(created) FROM order_entity);";
+        var idQueryForCardPay = "SELECT * FROM order_entity ORDER BY created DESC;";
         var runner = new QueryRunner();
         var connection = getConnection();
         var paymentId = runner.query(connection, idQueryForCardPay, new BeanHandler<>(OrderEntity.class));

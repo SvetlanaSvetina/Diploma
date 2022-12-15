@@ -37,7 +37,7 @@ public class ByCardTest extends InitialTest {
 
         var expectedStatus = "APPROVED";
         var actualStatus = getPaymentInfo();
-        assertEquals(expectedStatus, actualStatus); // возвращаю getStatus
+        assertEquals(expectedStatus, actualStatus);
 
         var expectedAmount = "4500000";
         var actualAmount = getPaymentInfo();
