@@ -36,12 +36,12 @@ public class ByCreditTest extends InitialTest {
         buyPage.successResultNotification();
 
         var expectedStatus = "APPROVED";
-        var actualStatus = getCardStatusForPayWithCredit();
+        var actualStatus = getCreditRequestInfo();
         assertEquals(expectedStatus, actualStatus);
 
 
-        var bankIdExpected = getBankId();
-        var paymentIdActual = getPaymentIdForPayWithCredit();
+        var bankIdExpected = getCreditRequestInfo();
+        var paymentIdActual = getOrderInfo();
         assertNotNull(bankIdExpected);
         assertNotNull(paymentIdActual);
         assertEquals(bankIdExpected, paymentIdActual);
@@ -56,11 +56,11 @@ public class ByCreditTest extends InitialTest {
         buyPage.failureResultNotification();
 
         var expectedStatus = "Declined";
-        var actualStatus = getCardStatusForPayWithCredit();
+        var actualStatus = getCreditRequestInfo();
         assertEquals(expectedStatus, actualStatus);
 
-        var bankIdExpected = getBankId();
-        var paymentIdActual = getPaymentIdForPayWithCredit();
+        var bankIdExpected = getCreditRequestInfo();
+        var paymentIdActual = getOrderInfo();
         assertNotNull(bankIdExpected);
         assertNotNull(paymentIdActual);
         assertEquals(bankIdExpected, paymentIdActual);

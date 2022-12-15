@@ -28,22 +28,23 @@ public class ByCardTest extends InitialTest {
 
     // ТЕСТ ПРОЙДЕН (1.1. Успешная покупка тура картой со статусом APPROVED используя кнопку "Купить")
     @Test
-    public void shouldSuccessPayApprovedCard() {
+    public void
+    shouldSuccessPayApprovedCard() {
 
         var cardData = getApprovedNumber();
         buyPage.checkBuyForm(cardData);
         buyPage.successResultNotification();
 
         var expectedStatus = "APPROVED";
-        var actualStatus = getCardStatusForPayWithCard();
-        assertEquals(expectedStatus, actualStatus);
+        var actualStatus = getPaymentInfo();
+        assertEquals(expectedStatus, actualStatus); // возвращаю getStatus
 
         var expectedAmount = "4500000";
-        var actualAmount = getAmountPurchase();
+        var actualAmount = getPaymentInfo();
         assertEquals(expectedAmount, actualAmount);
 
-        var transactionIdExpected = getTransactionId();
-        var paymentIdActual = getPaymentIdForPayWithCard();
+        var transactionIdExpected = getPaymentInfo();
+        var paymentIdActual = getOrderInfo();
         assertNotNull(transactionIdExpected);
         assertNotNull(paymentIdActual);
         assertEquals(transactionIdExpected, paymentIdActual);
@@ -58,7 +59,7 @@ public class ByCardTest extends InitialTest {
         buyPage.failureResultNotification();
 
         var expectedStatus = "DECLINED";
-        var actualStatus = getCardStatusForPayWithCard();
+        var actualStatus = getPaymentInfo();
         assertEquals(expectedStatus, actualStatus);
 
     }
