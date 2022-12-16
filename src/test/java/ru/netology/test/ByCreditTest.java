@@ -6,8 +6,6 @@ import org.junit.jupiter.api.Test;
 import ru.netology.pages.BuyPage;
 import ru.netology.pages.MainPage;
 
-import java.sql.SQLException;
-
 import static com.codeborne.selenide.Selenide.$$;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -36,12 +34,12 @@ public class ByCreditTest extends InitialTest {
         buyPage.successResultNotification();
 
         var expectedStatus = "APPROVED";
-        var actualStatus = getCreditRequestInfo();
+        var actualStatus = getCreditRequestInfo().get(0).getStatus();
         assertEquals(expectedStatus, actualStatus);
 
 
-        var bankIdExpected = getCreditRequestInfo();
-        var paymentIdActual = getOrderInfo();
+        var bankIdExpected = getCreditRequestInfo().get(0).getBank_id();
+        var paymentIdActual = getOrderInfo().get(0).getPayment_id();
         assertNotNull(bankIdExpected);
         assertNotNull(paymentIdActual);
         assertEquals(bankIdExpected, paymentIdActual);
@@ -60,7 +58,7 @@ public class ByCreditTest extends InitialTest {
         assertEquals(expectedStatus, actualStatus);
 
         var bankIdExpected = getCreditRequestInfo();
-        var paymentIdActual = getOrderInfo();
+        var paymentIdActual = getPaymentInfo();
         assertNotNull(bankIdExpected);
         assertNotNull(paymentIdActual);
         assertEquals(bankIdExpected, paymentIdActual);

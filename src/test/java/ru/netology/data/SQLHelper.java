@@ -2,13 +2,15 @@ package ru.netology.data;
 
 import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.handlers.BeanHandler;
+import org.apache.commons.dbutils.handlers.BeanListHandler;
 import ru.netology.database.CreditRequestEntity;
 import ru.netology.database.OrderEntity;
 import ru.netology.database.PaymentEntity;
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.SQLException;
-import org.apache.commons.dbutils.handlers.ScalarHandler;
+import java.util.List;
+import org.apache.commons.dbutils.ResultSetHandler;
+
 import lombok.SneakyThrows;
 
 public class SQLHelper {
@@ -37,31 +39,31 @@ public class SQLHelper {
     }
 
     @SneakyThrows
-    public static String getPaymentInfo () {
-        String statusQuery = "SELECT * FROM payment_entity WHERE created = (SELECT MAX(created) FROM payment_entity);";
+    public static List<PaymentEntity> getPaymentInfo() {
+        var statusQuery = "SELECT * FROM payment_entity ORDER BY created DESC;";
         var runner = new QueryRunner();
         var connection = getConnection();
-        var cardStatus = runner.query(connection, statusQuery, new BeanHandler<>(PaymentEntity.class));
-        return cardStatus.getStatus();
+        ResultSetHandler<List<PaymentEntity>> resultHandler= new BeanListHandler<>(PaymentEntity.class);
+        return runner.query(connection,statusQuery,resultHandler);
     }
 
     @SneakyThrows
-    public static String getCreditRequestInfo() {
-        String statusQuery = "SELECT * FROM credit_request_entity ORDER BY created DESC;";
+    public static List<CreditRequestEntity> getCreditRequestInfo() {
+        var statusQuery = "SELECT * FROM credit_request_entity ORDER BY created DESC;";
         var runner = new QueryRunner();
         var connection = getConnection();
-        var cardStatus = runner.query(connection, statusQuery, new BeanHandler<>(CreditRequestEntity.class));
-        return cardStatus.getStatus();
+        ResultSetHandler<List<CreditRequestEntity>> resultHandler= new BeanListHandler<>(CreditRequestEntity.class);
+        return runner.query(connection,statusQuery,resultHandler);
 
     }
 
     @SneakyThrows
-    public static String getOrderInfo() {
+    public static List<OrderEntity> getOrderInfo() {
         var idQueryForCardPay = "SELECT * FROM order_entity ORDER BY created DESC;";
         var runner = new QueryRunner();
         var connection = getConnection();
-        var paymentId = runner.query(connection, idQueryForCardPay, new BeanHandler<>(OrderEntity.class));
-        return paymentId.getPayment_id();
+        ResultSetHandler<List<OrderEntity>>resultHandler = new BeanListHandler<>(OrderEntity.class);
+        return runner.query(connection, idQueryForCardPay, resultHandler);
     }
-
 }
+
